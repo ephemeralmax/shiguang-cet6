@@ -1,0 +1,67 @@
+{
+  "name": "shiguang-cet6",
+  "version": "1.0.2",
+  "private": true,
+  "description": "拾光六级 - 本地桌面学习应用",
+  "author": "张阳",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "test": "node tests/study-core.test.js",
+    "smoke": "electron scripts/smoke.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.shiguang.cet6",
+    "productName": "拾光六级",
+    "copyright": "本地学习工具",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "study-core.js",
+      "styles.css",
+      "index.html",
+      "data/**/*",
+      "!**/*.map"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "拾光六级",
+      "artifactName": "拾光六级-${version}-安装程序.${ext}"
+    },
+    "portable": {
+      "artifactName": "拾光六级-${version}-便携版.${ext}"
+    }
+  }
+}
